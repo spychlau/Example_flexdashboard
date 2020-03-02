@@ -5,17 +5,84 @@ output:
     orientation: columns
     vertical_layout: fill
 ---
+You open a new flexboard by choosing "flexdashboard" from templates 
 
 ```{r setup, include=FALSE}
 library(flexdashboard)
+library(ggplot2)
+library(tidyverse)
+
 ```
 
-Column {data-width=650}
+Add a sidebar showing up on all pages (use simple dashes for a single sidebar) {.sidebar}
+=======================
+Eerything that goes into the sidebar
+
+# First example
+
+Just using one hasgtag is a way of creating a whole new flexdashboard
+
+Column {data-width=350}
 -----------------------------------------------------------------------
 
 ### Chart A
 
+```{r, fig.height=12}
+
+ggplot(mpg, aes(displ, cyl)) +
+  geom_point(color = "gray70") +
+  geom_smooth() +
+  theme_minimal() +
+  labs(title = "First plot") 
+
+```
+
+Column {.tabset fig.height=18}
+-----------------------------------------------------------------------
+
+Two more charts
+
+### Chart B
+
 ```{r}
+
+ggplot(mpg, aes(displ, cyl)) +
+  geom_point(color = "gray70") +
+  geom_smooth() +
+  theme_bw() +
+  facet_wrap(~trans) +
+  labs(title = "Second plot")
+
+```
+
+### Chart C
+
+```{r}
+
+ggplot(mpg, aes(displ, cyl)) +
+  geom_point(color = "gray70") +
+  geom_smooth() +
+  theme_bw() +
+  facet_wrap(~manufacturer) +
+  labs(title = "Third plot") 
+```
+
+
+# Second example
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart A
+
+```{r, fig.height=12}
+
+library(ggplot2)
+ggplot(mpg, aes(displ, cyl)) +
+  geom_point(color = "gray70") +
+  geom_smooth() +
+  theme_minimal() +
+  labs(title = "First plot")
 
 ```
 
@@ -26,11 +93,41 @@ Column {data-width=350}
 
 ```{r}
 
+ggplot(mpg, aes(displ, cyl)) +
+  geom_point(color = "gray70") +
+  geom_smooth() +
+  theme_bw() +
+  facet_wrap(~trans) +
+  labs(title = "Second plot")
+
 ```
 
 ### Chart C
 
 ```{r}
 
+ggplot(mpg, aes(displ, cyl)) +
+  geom_point(color = "gray70") +
+  geom_smooth() +
+  theme_bw() +
+  facet_wrap(~manufacturer) +
+  labs(title = "Third plot") 
 ```
 
+Column {data-width=300}
+-----------------------------------------------------------------------
+
+### Chart D
+
+```{r,fig.height=12}
+
+ggplot(mpg, aes(displ, cyl)) +
+  geom_point(color = "gray70") +
+  geom_smooth() +
+  theme_bw() +
+  facet_wrap(~trans) +
+  labs(title = "Fourth plot")
+
+```
+
+Publishing your flexdashboard: Create repo on Githib without any lisence or read me
